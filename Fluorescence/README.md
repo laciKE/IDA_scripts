@@ -14,9 +14,9 @@ However, when I checked what this plugin does, it turns out that it is very simp
 * prints list of all found calls and basic stats
 * re-run again for unhighlighting
 
-![Highlighted calls]screenshot_1.png)
+![Highlighted calls](screenshot_1.png)
 
-![Basic stats]screenshot_2.png)
+![Basic stats](screenshot_2.png)
 
 ## Installation and usage
 
