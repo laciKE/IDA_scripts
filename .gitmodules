@@ -1,3 +1,6 @@
 [submodule "gandcrab_string_decryptor"]
 	path = gandcrab_string_decryptor
 	url = https://github.com/laciKE/gandcrab_string_decryptor.git
+[submodule "snatch_string_decryptor"]
+	path = snatch_string_decryptor
+	url = https://github.com/laciKE/snatch_string_decryptor.git
