@@ -39,7 +39,12 @@ class CallHighlighterPlugin_t {
 
     is_call(addr) {
         // call instructions
-        if (GetMnem(addr) == "call") {
+        auto insn = DecodeInstruction(addr);
+        auto feature = 0;
+        if (insn != 0) {
+	    feature = insn.feature;
+        }
+        if ((feature & CF_CALL) || (GetMnem(addr) == "call")) {
             this.calls++;
             return 1;
         }
@@ -61,10 +66,10 @@ class CallHighlighterPlugin_t {
         while (addr != BADADDR) {
             if (this.is_call(addr)) {
                 Message("call at %08lx\t%s\n", addr, GetDisasm(addr));
-                if (get_color(addr, CIC_ITEM) == DEFCOLOR) {
-                    set_color(addr, CIC_ITEM, this.COLOR);
-                } else if (get_color(addr, CIC_ITEM) == this.COLOR) {
-                    set_color(addr, CIC_ITEM, DEFCOLOR);
+                if (GetColor(addr, CIC_ITEM) == DEFCOLOR) {
+                    SetColor(addr, CIC_ITEM, this.COLOR);
+                } else if (GetColor(addr, CIC_ITEM) == this.COLOR) {
+                    SetColor(addr, CIC_ITEM, DEFCOLOR);
                 }
             }
             addr = FindCode(addr, SEARCH_DOWN | SEARCH_NEXT);
