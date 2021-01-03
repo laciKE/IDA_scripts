@@ -7,8 +7,8 @@ Proof of Concept
 * proof of concept for running external programs/commands and get their output back to the IDA
 * uses external python command interpreter for base64 decoding
 	* if you want to see pure-idc implementation of Base64 decoding, just check the implementation in my [Snatch ransomware strings decryptor](https://github.com/laciKE/snatch_string_decryptor)
-* **IDA Freeware support**
-	* yes, this PoC shows how we can execute **external Python from IDC**
+* **IDA Freeware supported**
+	* yes, this PoC shows how we can execute **external Python from IDC** even in IDA Freeware
 
 ![IDA View with comment](screenshot_1.png)
 
