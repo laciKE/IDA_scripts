@@ -24,13 +24,13 @@ static main() {
     
     auto base64_str = get_strlit_contents(addr, -1, get_str_type(addr));
     auto output = "ida_output_" + ltoa(addr, 16);
-    if (idadir()[0] == "/") {
+    /*if (idadir()[0] == "/") {
         output = "/tmp/" + output; //Linux/Unix-like temp path
     } else {
-        output = "%TEMP%\\" + output; //Windows-like temp path
-    }
+        output = "%TEMP%\\" + output; //Windows-like temp path // %TEMP% don't work
+    }*/
 
-    call_system("python -c 'from base64 import b64decode; print(b64decode(\"" + base64_str +"\"))' > " + output);
+    call_system("python -c \"from base64 import b64decode; print(b64decode('" + base64_str +"').decode('utf-8'))\" > " + output);
 
     auto handle = fopen(output, "rb");
     auto decoded_str = substr(readstr(handle), 0, -2); //skip trailing newline character
