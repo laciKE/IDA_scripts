@@ -30,16 +30,20 @@ static main() {
         output = "%TEMP%\\" + output; //Windows-like temp path // %TEMP% don't work
     }*/
 
-    call_system("python -c \"from base64 import b64decode; print(b64decode('" + base64_str +"').decode('utf-8'))\" > " + output);
+    auto error_code = call_system("python -c \"from base64 import b64decode; print(b64decode('" + base64_str +"').decode('utf-8'))\" > " + output);
+    
+    if (error_code == 0) {
+        auto handle = fopen(output, "rb");
+        if (handle) {
+            auto decoded_str = substr(readstr(handle), 0, -2); //skip trailing newline character
+            fclose(handle);
 
-    auto handle = fopen(output, "rb");
-    auto decoded_str = substr(readstr(handle), 0, -2); //skip trailing newline character
-    fclose(handle);
-    unlink(output);
-
-    msg("Base64 string: %s\nDecoded string: %s\n", base64_str, decoded_str);
-    set_cmt(addr, decoded_str, 1);
-    if (ea != addr ) {
-        refresh_idaview_anyway(); //if we have curson on instruction, refresh idaview to display repeatable comment added to the string
+            msg("Base64 string: %s\nDecoded string: %s\n", base64_str, decoded_str);
+            set_cmt(addr, decoded_str, 1);
+            if (ea != addr ) {
+                refresh_idaview_anyway(); //if we have curson on instruction, refresh idaview to display repeatable comment added to the string
+            }
+        }
+        unlink(output);
     }
 }
