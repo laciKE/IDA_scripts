@@ -2,6 +2,8 @@
 
 Proof of Concept
 
+My blog post about [Executing external programs from IDA](https://malwarelab.eu/posts/idc-python/)
+
 ## Features
 * simple IDC script for decoding Base64-encoded strings
 * proof of concept for running external programs/commands and get their output back to the IDA

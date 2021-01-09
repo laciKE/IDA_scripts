@@ -2,11 +2,14 @@
 
 Call Highlighter
 
+
 Inspired by [https://github.com/tacnetsol/ida/blob/master/plugins/fluorescence/fluorescence.py](https://github.com/tacnetsol/ida/blob/master/plugins/fluorescence/fluorescence.py)
 
 Few weeks ago I saw somewhere on the Internet question about IDA Freeware compatibility with the Fluorescence plugin. And because this plugin is written in IDAPython and IDAPython isn't officially supported by IDA Freeware, also this plugin isn't compatible.
 
 However, when I checked what this plugin does, it turns out that it is very simple - its purpose is to highlight call instructions. So as an exercise I re-created IDC script with similar feature, and moreover, I also created plugin version of IDC Fluorescence. Actually, this is my first IDC plugin (yes, real plugin)
+
+My blog post about [Fluorescence Call Highlighter and IDC Plugins](https://malwarelab.eu/posts/fluorescence/)
 
 ## Features
 * simple IDC script and/or plugin for highlighting call-like instructions
